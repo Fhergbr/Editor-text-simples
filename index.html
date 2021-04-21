@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Editor de Texto Simples</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/cac6827dd2.js" crossorigin="anonymous"></script>
+	<style>textarea{resize: none;} #editor{height: 300px;}</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header bg-info text-light">
+					<h2>Editor de texto</h2>
+				</div>
+				<div class="card-body mb-5">
+					<div class="col-md-12">
+						<div class="alert">
+							<button onclick="desfazer()" data-toggle="tooltip" title="Desfazer" class="btn btn-default border btn-sm"><i class="fas fa-undo"></i>
+							</button>
+							<button onclick="refaz()" data-toggle="tooltip" title="Refazer" class="border btn btn-default btn-sm" ><i class="fas fa-redo"></i></button>
+
+							<button onclick="esquerda()" data-toggle="tooltip" title="Alinhar a esquerda" class="btn btn-default border btn-sm"><i class="fas fa-align-left"></i>
+							</button>
+							<button onclick="justificar()" data-toggle="tooltip" title="justificar" class="border btn btn-default btn-sm"><i class="fas fa-align-justify"></i>
+							</button>							
+							<button onclick="direita()" data-toggle="tooltip" title="Alinhar a direita" class="border btn btn-default btn-sm"><i class="fas fa-align-right" ></i>
+							</button>
+							<button id="negrito" onclick="bold()" data-toggle="tooltip" title="Negrito" class="border btn btn-default btn-sm"><i class="fas fa-bold"></i></button>
+							
+							<button onclick="italic()" data-toggle="tooltip" title="Italico" class="border btn btn-default btn-sm"><i class="fas fa-italic"></i></button>
+							<button onclick="sublinhado()" data-toggle="tooltip" title="Sublinhado" class="border btn btn-default btn-sm" ><i class="fas fa-underline"></i></button>
+							<button onclick="recortar()" data-toggle="tooltip" title="Recortar" class="border btn btn-default btn-sm" ><i class="fas fa-cut"></i></button>
+							<button onclick="removeFormat()" data-toggle="tooltip" title="Remover formatação" class="border btn btn-default btn-sm" ><i class="fas fa-remove-format"></i></button>
+							<button onclick="selecionaTudo()" data-toggle="tooltip" title="Selecionar Tudo" class="border btn btn-default btn-sm" ><i class="fas fa-check-circle"></i></button>
+							
+						</div>
+						<!--<textarea name="" id="" rows="15" class="form-control"></textarea>-->
+						<iframe class="form-control" id="editor" contenteditable="true" name="editor" src="about:blank"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script>
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
+	<script>
+		editor.document.designMode='on'
+		var bold = function(){
+			editor.document.execCommand('bold',false, null)
+		}
+		var italic = function(){
+			editor.document.execCommand('italic',false, null)
+
+		}
+		var justificar = function(){
+			editor.document.execCommand('justifyCenter',false,null)
+		}
+		var desfazer = function(){
+			editor.document.execCommand('undo',false,null)
+		}
+		var sublinhado = function(){
+			editor.document.execCommand("underline",false, null)
+		}
+		var esquerda = function(){
+			editor.document.execCommand("justifyLeft",false,null)
+		}
+		var direita = function(){
+			editor.document.execCommand("justifyRight",false,null)
+		}
+		var recortar = function(){
+			editor.document.execCommand("cut",false,null)
+		}
+		var refaz = function(){
+			editor.document.execCommand("redo",false,null)
+		}
+		var removeFormat = function(){
+			editor.document.execCommand("removeFormat",false,null)
+		}
+		var selecionaTudo = function(){
+			editor.document.execCommand("selectAll",false,null)
+		}
+	</script>
+	<script src="script.js"></script>
+</body>
+</html>
